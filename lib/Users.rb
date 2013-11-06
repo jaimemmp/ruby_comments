@@ -11,18 +11,27 @@ class Users
 		@@users = []
 	end
 
-	def self.calc_distance(user1, user2)
-		match_user_1 = self.get_dist_zero(user1)
-		if match_user_1.include? user2
-			return 0
-		else
-			match_user_2 = self.get_dist_zero(user2)
-			if !(match_user_1 & match_user_2).empty?
-				return 1
-			end
+	def self.calc_distance(user1,user2)
+		range = 0
+		users = []
+		users_tmp = []
+		users = self.get_dist_zero(user1)
+		match = users.include? user2
+		while match == false && range < 3
+			
+			users.each do |user|
+				
+				users_tmp << self.get_dist_zero(user)
+							
+			end	
+			users = users_tmp.flatten
+			match = users.include? user2
+			range+=1
 		end
-
+		range
 	end
+
+
 
 	def self.get_dist_zero(user1)
 		match = []

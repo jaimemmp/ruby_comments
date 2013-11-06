@@ -78,4 +78,40 @@ describe "favorites system" do
 		expect(distance).to eq(1)
 	end
 
+
+	it "Calc distance betwen 2 users by favorites with distance 2" do
+		user_1 = Users.new
+		user_1.favorites << 1
+		user_2 = Users.new
+		user_2.favorites << 1
+		user_2.favorites << 2
+		user_3 = Users.new
+		user_3.favorites << 2
+		user_3.favorites << 3
+		user_4 = Users.new
+		user_4.favorites << 3
+		distance = Users.calc_distance(user_1,user_4)
+		expect(distance).to eq(2)
+	end
+
+
+	it "Calc distance betwen 2 users by favorites with distance 3" do
+		user_1 = Users.new
+		user_1.favorites << 1
+		user_2 = Users.new
+		user_2.favorites << 1
+		user_2.favorites << 2
+		user_3 = Users.new
+		user_3.favorites << 2
+		user_3.favorites << 3
+		user_4 = Users.new
+		user_4.favorites << 3
+		user_4.favorites << 4
+		user_5 = Users.new
+		user_5.favorites << 4
+		distance = Users.calc_distance(user_1,user_5)
+		expect(distance).to eq(3)
+	end
+
+
 end
