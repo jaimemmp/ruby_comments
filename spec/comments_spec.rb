@@ -29,4 +29,33 @@ describe "related comments sistem" do
 		distance = comments.calc_distance(444,333)
 		expect(distance).to eq(1)
 	end
+
+end
+
+
+describe "favorites sistem" do
+	before :each do 
+		Users.empty
+	end
+
+	it "check single user without favorites" do
+		user = Users.new(1)
+		expect(user.favorites.length).to eq(0)
+	end
+
+	it "check single user with one favorite" do
+		user = Users.new(1)
+		user.favorites << 1
+		expect(user.favorites[0]).to eq(1)
+	end
+
+	it "check single user with more than one favorite" do
+		user = Users.new(1)
+		user.favorites << 1
+		user.favorites << 2
+		user.favorites << 3
+		expect(user.favorites).to eq([1,2,3])
+	end
+
+
 end
