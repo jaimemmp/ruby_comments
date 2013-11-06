@@ -49,3 +49,18 @@
 
     include(element)
     
+### Bundler
+
+Install all dependencies
+
+    bundle install
+
+### Guard
+
+Interactive mode (problems with virtual box)
+
+    guard -i
+
+Pooling mode
+
+    guard -p -l 4
