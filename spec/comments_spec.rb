@@ -33,29 +33,49 @@ describe "related comments sistem" do
 end
 
 
-describe "favorites sistem" do
+describe "favorites system" do
 	before :each do 
 		Users.empty
 	end
 
 	it "check single user without favorites" do
-		user = Users.new(1)
+		user = Users.new()
 		expect(user.favorites.length).to eq(0)
 	end
 
 	it "check single user with one favorite" do
-		user = Users.new(1)
+		user = Users.new()
 		user.favorites << 1
 		expect(user.favorites[0]).to eq(1)
 	end
 
 	it "check single user with more than one favorite" do
-		user = Users.new(1)
+		user = Users.new
 		user.favorites << 1
 		user.favorites << 2
 		user.favorites << 3
 		expect(user.favorites).to eq([1,2,3])
 	end
 
+	it "Calc distance betwen 2 users by favorites with distance 0" do
+		user_1 = Users.new
+		user_1.favorites << 1
+		user_2 = Users.new
+		user_2.favorites << 1
+		distance = Users.calc_distance(user_1,user_2)
+		expect(distance).to eq(true)
+	end
+
+	it "Calc distance betwen 2 users by favorites with distance 1" do
+		user_1 = Users.new
+		user_1.favorites << 1
+		user_2 = Users.new
+		user_2.favorites << 1
+		user_2.favorites << 2
+		user_3 = Users.new
+		user_3.favorites << 2
+		distance = Users.calc_distance(user_1,user_2)
+		expect(distance).to eq(true)
+	end
 
 end
