@@ -63,7 +63,7 @@ describe "favorites system" do
 		user_2 = Users.new
 		user_2.favorites << 1
 		distance = Users.calc_distance(user_1,user_2)
-		expect(distance).to eq(true)
+		expect(distance).to eq(0)
 	end
 
 	it "Calc distance betwen 2 users by favorites with distance 1" do
@@ -74,8 +74,8 @@ describe "favorites system" do
 		user_2.favorites << 2
 		user_3 = Users.new
 		user_3.favorites << 2
-		distance = Users.calc_distance(user_1,user_2)
-		expect(distance).to eq(true)
+		distance = Users.calc_distance(user_1,user_3)
+		expect(distance).to eq(1)
 	end
 
 end
